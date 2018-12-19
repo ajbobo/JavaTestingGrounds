@@ -6,7 +6,8 @@ public class ProgressBar {
 			StringBuilder builder = new StringBuilder();
 			
 			builder.append("\r");
-			builder.append(String.format("\r%3d%%", x));
+			String color = (x < 50 ? ConsoleColors.GREEN : x < 80 ? ConsoleColors.YELLOW : ConsoleColors.RED);
+			builder.append(String.format("\r%s%3d%%%s", color, x, ConsoleColors.RESET));
 			builder.append(" [");
 			int count = (int)((x / 100.0) * 20);
 			for (int y = 1; y <= 20; y++) {
@@ -24,6 +25,7 @@ public class ProgressBar {
 				System.out.println(e.getMessage());
 			}
 		}
+		System.out.println();
 	}
 	
 }
