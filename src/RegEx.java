@@ -5,11 +5,11 @@ public class RegEx {
 
 	public static void main(String[] args) {
 
-		String details = "<https://this.is.a.url/with?query=params>; rel=\"next\"," +
+		String details = "<https://this.is.a.url/with?query=params&param_2=123&param_3=hello>; rel=\"next\"," +
 				"   <http://this.is.not.an.https.url/with?query=params>; rel=\"next1\"  , " +
 				"<https://this.is.another.url/with?query=params>; rel=\"next2\"";
 
-		String regEx = "(?<url>https://[\\w./?=]+)>; rel=\"(?<rel>\\w+)\"";
+		String regEx = "(?<url>https://[\\w./?=_&]+)>; rel=\"(?<rel>\\w+)\"";
 		Pattern pattern = Pattern.compile(regEx);
 		Matcher matcher = pattern.matcher(details);
 		while (matcher.find()) {
